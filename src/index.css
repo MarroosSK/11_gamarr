@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300;1,400;1,500&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.app,
+.content {
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  /* overflow-x: hidden;  */
+  line-height: 0 !important;
+  scroll-behavior: smooth;
+}
+
+
+a {
+  text-decoration: none;
+  color: #6f7071 !important;
+}
+
+
+video {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.MuiInputLabel-root {
+  color: #9b9b9b !important;
+}
+
+.MuiList-root {
+  padding: 0 !important;
+}
+
+.heroPic {
+  background-image: url("/src/assets/diabloCover.jpg");
+  width: 100%;
+  height: 500px !important;
+  background-size: 100% 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+}
+
+.heroPic2 {
+  width: 100%;
+  background-size: 100% 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.heroPicArticle {
+  width: 100%;
+  height: 435px;
+  background-size: 100% 100%;
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 82%);
+}
+
+
+button:hover {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.parent {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.centered {
+  display: none;
+  position: absolute;
+  top: -10%;
+  left: 30%;
+  transform: translateY(-70%) translateX(-50%);
+
+}
+
+.centered-sm {
+  display: block;
+  text-align: center;
+  position: absolute;
+  top: -10%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateY(-50%);
+
+}
+
+.centered2 {
+  display: block;
+  position: absolute;
+  top: -10%;
+  left: 70%;
+  transform: translateY(-70%) translateX(-50%);
+
+}
+
+.hidden-pre-order {
+  display: none;
+}
+
+.nav a.active{
+  color: #ff5f10 !important;
+}
+@media screen and (max-width: 1022px) {
+  .centered2 {
+    display: none;
+  }
+
+  .hidden-pre-order {
+    display: block;
+  }
+
+}
+
+@media screen and (min-width: 728px) {
+  .centered {
+    display: block;
+  }
+
+  .centered-sm {
+    display: none;
+  }
+}
+
+.category-icon:hover {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.scrolled {
+  background-color: #000 !important;
+  color: red !important;
+}
+
+@media screen and (min-width: 500px) {
+  .heroPic {
+    background-image: url("/src/assets/5680.jpg");
+  }
+}
