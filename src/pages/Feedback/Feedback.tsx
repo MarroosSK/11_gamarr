@@ -54,14 +54,13 @@ const Feedback = () => {
   return (
     <Grid
       container
-      xs={12}
       height="100%"
       display="flex"
       flexDirection="column"
       alignItems="center"
-      marginTop="80px"
+      marginTop="120px"
       marginBottom="50px"
-      sx={{minHeight: "100vh"}}
+      sx={{ minHeight: "100vh" }}
     >
       <Title text="Tell us" />
       <Grid
@@ -72,6 +71,7 @@ const Feedback = () => {
         alignItems="center"
         gap="16px"
       >
+        {/* INFO */}
         {showAlert && (
           <Alert
             severity="success"
@@ -81,6 +81,7 @@ const Feedback = () => {
             Mail sent
           </Alert>
         )}
+        {/* FORM */}
         <form
           style={{
             display: "flex",

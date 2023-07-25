@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Box, Button } from "@mui/material";
-import { NavLink } from "react-router-dom";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { purchaseData } from "../../helpers/data";
 import { Line, Bar } from "react-chartjs-2";
 import { Chart, registerables } from "chart.js";
+import { BackButton } from "..";
 Chart.register(...registerables);
 
 const Statistics = () => {
+  // useState
   const [gameData] = useState({
     labels: purchaseData.map((data) => data.month),
     datasets: [
@@ -38,6 +38,7 @@ const Statistics = () => {
       display="flex"
       flexDirection="column"
     >
+      {/* CHARTS */}
       <Box display="flex" sx={{ flexDirection: { xs: "column", sm: "row" } }}>
         <Button onClick={() => setSelectedChart("line")}>Line Chart</Button>
         <Button onClick={() => setSelectedChart("bar")}>Bar Chart</Button>
@@ -45,15 +46,8 @@ const Statistics = () => {
       {selectedChart === "line" && <Line data={gameData} />}
       {selectedChart === "bar" && <Bar data={gameData} />}
 
-      <NavLink to={"/"} style={{ alignSelf: "center", marginTop: "40px" }}>
-        <Button
-          variant="outlined"
-          color="primary"
-          startIcon={<ArrowBackIcon />}
-        >
-          home
-        </Button>
-      </NavLink>
+      {/* back to HOME */}
+      <BackButton />
     </Box>
   );
 };

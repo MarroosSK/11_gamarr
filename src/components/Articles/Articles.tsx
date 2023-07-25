@@ -5,7 +5,6 @@ import {
   CardActionArea,
   CardMedia,
   CardContent,
-  CardActions,
   Grid,
   Typography,
 } from "@mui/material";
@@ -13,8 +12,6 @@ import { Title } from "..";
 import { NavLink } from "react-router-dom";
 
 const Articles = () => {
-
-
   return (
     <Grid
       container
@@ -22,13 +19,16 @@ const Articles = () => {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      marginTop="95px"
+      marginTop="120px"
       marginBottom="50px"
     >
+      {/* TITLE */}
       <Title text="Upcoming" />
+
+      {/* ARTICLES */}
       <Grid item container justifyContent="center" alignItems="stretch" gap={2}>
         {articlesData.map((article) => (
-          <NavLink to={`/articles/${article.id}`}>
+          <NavLink to={`/articles/${article.id}`} key={article.id}>
             <Card sx={{ maxWidth: 450, boxShadow: "none", height: "100%" }}>
               <CardActionArea>
                 <CardMedia
@@ -62,7 +62,6 @@ const Articles = () => {
                   {article.text.slice(0, 200).trim()}...
                 </Typography>
               </CardContent>
-              <CardActions></CardActions>
             </Card>
           </NavLink>
         ))}

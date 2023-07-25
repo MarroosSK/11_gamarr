@@ -28,7 +28,7 @@ const StoreSlider = () => {
     <Box>
       <Carousel
         responsive={responsive}
-        arrows={true}
+        arrows={false}
         autoPlay={true}
         autoPlaySpeed={5000}
         swipeable={false}
@@ -39,13 +39,13 @@ const StoreSlider = () => {
         pauseOnHover={false}
       >
         {storeProductsData.slice(0, 5).map((product) => (
-          <NavLink to={`/store/${product.id}`}>
+          <NavLink to={`/store/${product.id}`} key={product.id}>
             <Box position="relative" width={"100%"} sx={{ cursor: "pointer" }}>
               <img
                 src={product.picture}
                 alt={product.title}
                 className="img"
-                style={{ width: "100vw", height: "70vh" }}
+                style={{ width: "100%", height: "70vh" }}
               />
               <Typography
                 textAlign="center"

@@ -10,6 +10,10 @@ import Login from "./Login/Login";
 import Friends from "./Friends/Friends";
 import Privacy from "./Privacy/Privacy";
 import TermsOfUse from "./Terms/TermsOfUse";
+import BackButton from "../components/BackButton/BackButton";
+import PrivacyData from "../components/PrivacyData/PrivacyData";
+import TermsData from "../components/TermsData/TermsData";
+import BackgroundSpot from "../components/BackgroundSpot/BackgroundSpot";
 
 export {
   Account,
@@ -23,5 +27,9 @@ export {
   Statistics,
   Store,
   Privacy,
-  TermsOfUse
+  TermsOfUse,
+  BackButton,
+  PrivacyData,
+  TermsData,
+  BackgroundSpot,
 };

@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import {
   Avatar,
   Box,
-  Button,
   Card,
   CardMedia,
   CardActionArea,
@@ -12,6 +11,7 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  IconButton,
 } from "@mui/material";
 import { Title } from "../../components";
 import { NavLink } from "react-router-dom";
@@ -19,10 +19,8 @@ import profilePic from "../../assets/Anonym.jpg";
 import { accountData } from "../../helpers/data";
 import { LoginContext } from "../../context/LoginContext";
 import { MyGamesContext } from "../../context/MyGamesContext";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Friends, Statistics } from "..";
-import { MyGameType } from "../../types/types";
+import { BackgroundSpot, Friends, Statistics } from "..";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { toast } from "react-toastify";
 
@@ -35,12 +33,9 @@ const Account = () => {
     return contextGames.myGames.some((game) => game.id === id);
   };
 
-  const handleWishList = (item: MyGameType) => {
-    contextGames.setMyGames([...contextGames.myGames, item]);
-  };
   const handleRemoveFromWishList = (id: string) => {
     const filteredList = contextGames.myGames.filter((game) => game.id !== id);
-    if(filteredList){
+    if (filteredList) {
       contextGames.setMyGames(filteredList);
     }
   };
@@ -65,34 +60,22 @@ const Account = () => {
     });
   };
 
-
-
   return (
     <Grid
       container
-      xs={12}
       height="100%"
       display="flex"
       flexDirection="column"
       alignItems="center"
       position="relative"
-      marginTop="95px"
+      marginTop="120px"
       marginBottom="50px"
     >
-      <div
-        style={{
-          position: "absolute",
-          top: 100,
-          left: 200,
-          width: 200,
-          height: 300,
-          background: "linear-gradient(to right, green, black)",
-          borderRadius: "85%",
-          filter: "blur(200px)",
-          zIndex: -1,
-        }}
-      />
+      {/* background spot */}
+      <BackgroundSpot />
+      {/* TITLE */}
       <Title text="My Account" />
+      {/* PROFILE */}
       <Grid
         item
         container
@@ -102,6 +85,7 @@ const Account = () => {
         alignItems="center"
         gap="16px"
       >
+        {/* PROFILE DETAILS */}
         <Box
           display="flex"
           sx={{
@@ -116,14 +100,9 @@ const Account = () => {
               sx={{ width: { xs: 150, sm: 220 }, height: { xs: 120, sm: 180 } }}
             />
             <NavLink to={"/"} style={{ alignSelf: "center", margin: "10px" }}>
-              <Button
-                variant="contained"
-                color="error"
-                endIcon={<LogoutIcon />}
-                onClick={() => logout()}
-              >
-                logout
-              </Button>
+              <IconButton onClick={() => logout()}>
+                <LogoutIcon />
+              </IconButton>
             </NavLink>
           </Box>
           <List>
@@ -146,6 +125,7 @@ const Account = () => {
         </Box>
       </Grid>
 
+      {/* OPTIONS */}
       <Grid item>
         <Box
           display="flex"
@@ -188,7 +168,7 @@ const Account = () => {
         </Box>
       </Grid>
 
-      {/* category */}
+      {/* category WISHLIST */}
       {activeLink === "wishlist" && (
         <Grid
           item
@@ -223,27 +203,18 @@ const Account = () => {
                     >
                       {game.title}
                     </Typography>
-                    {game.id && isGameOnWishlist(game.id) ? (
-                <Button
-                  size="small"
-                  variant="outlined"
-                  color="primary"
-                  centerRipple
-                  onClick={() => game.id && handleRemoveFromWishList(game.id)}
-                >
-                  <FavoriteIcon />
-                </Button>
-              ) : (
-                <Button
-                  size="small"
-                  variant="outlined"
-                  color="primary"
-                  centerRipple
-                  onClick={() => handleWishList(game)}
-                >
-                  <FavoriteBorderOutlinedIcon />
-                </Button>
-              )}
+                    {game.id && isGameOnWishlist(game.id) && (
+                      <>
+                        <IconButton
+                          size="small"
+                          onClick={() =>
+                            game.id && handleRemoveFromWishList(game.id)
+                          }
+                        >
+                          <FavoriteIcon />
+                        </IconButton>
+                      </>
+                    )}
                   </Box>
                 </CardContent>
               </CardActionArea>
@@ -252,14 +223,14 @@ const Account = () => {
         </Grid>
       )}
 
-      {/* category */}
+      {/* category FRIENDS */}
       {activeLink === "friends" && (
         <Grid item>
           <Friends />
         </Grid>
       )}
 
-      {/* category */}
+      {/* category STATS */}
       {activeLink === "stats" && (
         <Grid item>
           <Statistics />

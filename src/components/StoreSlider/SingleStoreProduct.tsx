@@ -106,7 +106,8 @@ const SingleStoreProduct = () => {
   }
 }, [id]);
   return (
-    
+    <section key={persistProduct?.id}>
+
     <Grid
       container
       display="flex"
@@ -391,7 +392,7 @@ const SingleStoreProduct = () => {
           // sx={{background: "#fff"}}
         >
           {similiarGames.slice(0,6).map((product) => (
-            <NavLink to={`/store/${product.id}`}>
+            <NavLink to={`/store/${product.id}`} key={product.id}>
             <Card
               sx={{ maxWidth: 300, boxShadow: "none", height: "250px" }}
               key={product.id}
@@ -430,6 +431,7 @@ const SingleStoreProduct = () => {
           ))}
         </Grid>
     </Grid>
+    </section>
          
   );
 };

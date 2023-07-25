@@ -49,7 +49,6 @@ const Sidebar = () => {
         <NavLink to="/articles" className={({ isActive }) => (isActive ? 'active' : '')}>
           <ListItemButton
             sx={{ "&:hover": { background: "transparent" } }}
-            onClick={() => window.location.reload()}
           >
             <motion.div
               whileHover={{ scale: 1.1, originX: 0 }}

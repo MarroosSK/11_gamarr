@@ -1,4 +1,3 @@
-
 import {
   Box,
   Accordion,
@@ -11,38 +10,26 @@ import { Title } from "../../components";
 import { NavLink } from "react-router-dom";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FAQdata } from "../../helpers/data";
-
+import { BackgroundSpot } from "..";
 
 const FAQ = () => {
-
-
   return (
     <>
       <Grid
         container
-        xs={12}
         height="100%"
         display="flex"
         flexDirection="column"
         alignItems="center"
         position="relative"
-        marginTop="95px"
+        marginTop="120px"
         marginBottom="50px"
       >
-        <div
-          style={{
-            position: "absolute",
-            top: 100,
-            left: 200,
-            width: 200,
-            height: 300,
-            background: "linear-gradient(to right, green, black)",
-            borderRadius: "85%",
-            filter: "blur(200px)",
-            zIndex: -1,
-          }}
-        />
+        {/* background spot */}
+        <BackgroundSpot />
+        {/* TITLE */}
         <Title text="FAQ" />
+        {/* FAQ */}
         <Grid
           item
           display="flex"
@@ -73,7 +60,7 @@ const FAQ = () => {
         sx={{
           flexDirection: { xs: "column" },
           justifyContent: { xs: "center" },
-          marginBottom:"200px"
+          marginBottom: "200px",
         }}
       >
         <Typography>

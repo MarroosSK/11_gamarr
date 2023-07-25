@@ -10,11 +10,9 @@ import {
   ErrorPage,
   FAQ,
   Feedback,
-  Friends,
   Home,
   Login,
   Privacy,
-  Statistics,
   Store,
   TermsOfUse,
 } from "./pages";
@@ -28,16 +26,18 @@ import {
 import { LoginContext } from "./context/LoginContext";
 
 function App() {
+  //context
   const darkContext = useContext(DarkModeContext);
   const loginContext = useContext(LoginContext);
 
-  //scroll
-  const {pathname} = useLocation()
+  //scrollUp
+  const { pathname } = useLocation();
 
-  useLayoutEffect(() =>{
-    window.scroll({top: 0, behavior: "auto"})
-  }, [pathname])
+  useLayoutEffect(() => {
+    window.scroll({ top: 0, behavior: "auto" });
+  }, [pathname]);
 
+  //keeping loggedIn
   useEffect(() => {
     const storedNickname = localStorage.getItem("nickname");
     const storedPassword = localStorage.getItem("password");
@@ -58,14 +58,12 @@ function App() {
         {loginContext.isLoggedIn ? (
           <>
             <Navbar />
-            <Box >
+            <Box>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/account" element={<Account />} />
-                <Route path="/friends" element={<Friends />} />
                 <Route path="/articles" element={<Articles />} />
                 <Route path="/articles/:id" element={<SingleArticle />} />
-                <Route path="/stats" element={<Statistics />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/feedback" element={<Feedback />} />
                 <Route path="/store" element={<Store />} />

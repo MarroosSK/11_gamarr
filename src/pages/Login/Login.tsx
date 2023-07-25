@@ -78,9 +78,9 @@ const Login = () => {
     >
       <Title text="Login" />
       <Button variant="contained" color="success" sx={{margin: "20px"}} onClick={() => handleSkip()}>Skip login</Button>
-      <Typography marginBottom="10px">
+      <Box marginBottom="10px">
         <Alert severity="info">Type anything...</Alert>
-      </Typography>
+      </Box>
       <form
         style={{
           display: "flex",
@@ -150,9 +150,9 @@ const Login = () => {
     >
       <Title text="Register" />
       <Button variant="contained" color="success" sx={{margin: "20px"}} onClick={() => handleSkip()}>Skip register</Button>
-      <Typography marginBottom="10px">
+      <Box marginBottom="10px">
         <Alert severity="info">Type anything...</Alert>
-      </Typography>
+      </Box>
       <form
         style={{
           display: "flex",

@@ -30,9 +30,11 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Store = () => {
+  //context
   const storeContext = useContext(StoreContext);
   const wishlistContext = useContext(MyGamesContext);
 
+  //filter
   const filteredGames = storeProductsData.filter((game) => {
     const searchFilter = game.title
       .toLowerCase()
@@ -116,15 +118,12 @@ const Store = () => {
     });
   };
 
-
-
   return (
     <>
       <StoreSlider />
       {/* filters */}
       <Grid
         container
-        xs={12}
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -210,11 +209,11 @@ const Store = () => {
         </Grid>
         <Grid item xs={7} sm={4} md={2}>
           <FormControl fullWidth size="small">
-            <InputLabel id="genre-label">Status</InputLabel>
+            <InputLabel id="status-label">Status</InputLabel>
             <Select
-              labelId="genre-label"
-              id="genre-select"
-              label="Genre"
+              labelId="status-label"
+              id="status-select"
+              label="Status"
               value={storeContext.filterByStatus}
               onChange={(e) => storeContext.setFilterByStatus(e.target.value)}
             >
@@ -242,117 +241,121 @@ const Store = () => {
           gap={2}
         >
           {filteredGames.map((product) => (
-            <Badge
-              badgeContent={
-                product.discount
-                  ? `- ${(
-                      ((product.oldPrice - product.price) / product.oldPrice) *
-                      100
-                    ).toFixed()}%`
-                  : 0
-              }
-              color="secondary"
-            >
-              <Card
-                sx={{
-                  position: "relative",
-                  width: 300,
-                  boxShadow: "none",
-                  height: 300,
-                }}
-                key={product.id}
+            <Box key={product.id}>
+              <Badge
+                badgeContent={
+                  product.discount
+                    ? `- ${(
+                        ((product.oldPrice - product.price) /
+                          product.oldPrice) *
+                        100
+                      ).toFixed()}%`
+                    : 0
+                }
+                color="secondary"
               >
-                <CardActionArea>
-                  <NavLink to={`/store/${product.id}`}>
-                    <LazyLoadImage
-                      effect="blur"
-                      src={product.picture}
-                      alt={product.title}
-                      height="auto"
-                      width="100%"
-                      style={{ objectFit: "cover", maxHeight: "200px" }}
-                    />
-                  </NavLink>
-                  <CardContent>
-                    <Box display="flex" justifyContent="space-between">
-                      <Typography
-                        gutterBottom
-                        variant="h5"
-                        fontSize="12px"
-                        component="div"
-                        color="primary"
-                      >
-                        {product.title}
-                      </Typography>
-                      <Box display="flex" flexDirection="column">
+                <Card
+                  sx={{
+                    position: "relative",
+                    width: 300,
+                    boxShadow: "none",
+                    height: 300,
+                  }}
+                >
+                  <CardActionArea>
+                    <NavLink to={`/store/${product.id}`} key={product.id}>
+                      <LazyLoadImage
+                        effect="blur"
+                        src={product.picture}
+                        alt={product.title}
+                        height="auto"
+                        width="100%"
+                        style={{ objectFit: "cover", maxHeight: "200px" }}
+                      />
+                    </NavLink>
+                    <CardContent>
+                      <Box display="flex" justifyContent="space-between">
                         <Typography
                           gutterBottom
                           variant="h5"
-                          fontSize="15px"
+                          fontSize="12px"
                           component="div"
+                          color="primary"
                         >
-                          {product.price}
-                          {product.currencyFormat}
+                          {product.title}
                         </Typography>
-                        {product.price !== product.oldPrice && (
+                        <Box display="flex" flexDirection="column">
                           <Typography
                             gutterBottom
                             variant="h5"
-                            fontSize="12px"
+                            fontSize="15px"
                             component="div"
-                            style={{ textDecoration: "line-through" }}
                           >
-                            {product.oldPrice}
+                            {product.price}
                             {product.currencyFormat}
                           </Typography>
-                        )}
+                          {product.price !== product.oldPrice && (
+                            <Typography
+                              gutterBottom
+                              variant="h5"
+                              fontSize="12px"
+                              component="div"
+                              style={{ textDecoration: "line-through" }}
+                            >
+                              {product.oldPrice}
+                              {product.currencyFormat}
+                            </Typography>
+                          )}
+                        </Box>
                       </Box>
-                    </Box>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions
-                  sx={{
-                    position: "absolute",
-                    bottom: "5px",
-                    right: "5px",
-                    justifyContent: "flex-end",
-                    alignItems: "flex-end",
-                  }}
-                >
-                  <Button
-                    size="small"
-                    variant="outlined"
-                    color="primary"
-                    centerRipple
-                    startIcon={<AddOutlinedIcon />}
-                    onClick={() => handleAddToCart(product)}
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions
+                    sx={{
+                      position: "absolute",
+                      bottom: "5px",
+                      right: "5px",
+                      justifyContent: "flex-end",
+                      alignItems: "flex-end",
+                    }}
                   >
-                    Buy Key
-                  </Button>
-                  {product.id && isGameOnWishlist(product.id) ? (
                     <Button
                       size="small"
                       variant="outlined"
                       color="primary"
                       centerRipple
-                      onClick={() => product.id && handleRemoveFromWishList(product.id)}
+                      startIcon={<AddOutlinedIcon />}
+                      onClick={() => handleAddToCart(product)}
                     >
-                      <FavoriteIcon color="error" />
+                      Buy Key
                     </Button>
-                  ) : (
-                    <Button
-                      size="small"
-                      variant="outlined"
-                      color="primary"
-                      centerRipple
-                      onClick={() => handleWishList(product)}
-                    >
-                      <FavoriteBorderOutlinedIcon />
-                    </Button>
-                  )}
-                </CardActions>
-              </Card>
-            </Badge>
+                    {product.id && isGameOnWishlist(product.id) ? (
+                      <Button
+                        size="small"
+                        variant="outlined"
+                        color="primary"
+                        centerRipple
+                        onClick={() =>
+                          product.id && handleRemoveFromWishList(product.id)
+                        }
+                      >
+                        <FavoriteIcon color="error" />
+                      </Button>
+                    ) : (
+                      <Button
+                        size="small"
+                        variant="outlined"
+                        color="primary"
+                        centerRipple
+                        onClick={() => handleWishList(product)}
+                      >
+                        <FavoriteBorderOutlinedIcon />
+                      </Button>
+                    )}
+                  </CardActions>
+                </Card>
+              </Badge>
+            </Box>
           ))}
         </Grid>
       </Grid>

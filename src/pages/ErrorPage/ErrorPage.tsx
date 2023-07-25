@@ -1,11 +1,8 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
 import sad from "../../assets/sad.png";
-
+import { BackButton } from "..";
 
 const ErrorPage = () => {
-
-
   return (
     <Stack
       height="100vh"
@@ -18,9 +15,7 @@ const ErrorPage = () => {
         <Typography color="text.secondary">
           OOOps! This game has not been developed yet! Come back{" "}
         </Typography>
-        <Link to="/" color="green">
-          <Typography sx={{ textDecoration: "underline" }}>home</Typography>
-        </Link>
+        <BackButton />
       </Box>
     </Stack>
   );

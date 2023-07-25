@@ -47,6 +47,8 @@ const SingleArticle = () => {
     }
   }, []);
   return (
+    <article key={persistArticle?.id}>
+
     <Grid
       container
       display="flex"
@@ -269,7 +271,7 @@ const SingleArticle = () => {
               display="flex"
               sx={{ flexDirection: { xs: "column", md: "row" } }}
             >
-              {persistArticle?.picture.map((pic) => (
+              {persistArticle?.picture.map((pic, index) => (
                 <CardMedia
                   component="img"
                   width="150px"
@@ -277,6 +279,7 @@ const SingleArticle = () => {
                   image={pic}
                   alt={persistArticle?.title}
                   style={{ objectFit: "contain" }}
+                  key={index}
                 />
               ))}
             </Box>
@@ -337,6 +340,7 @@ const SingleArticle = () => {
         ))}
       </Grid>
     </Grid>
+    </article>
   );
 };
 

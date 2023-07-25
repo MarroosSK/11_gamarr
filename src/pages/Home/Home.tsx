@@ -74,7 +74,6 @@ const Home = () => {
       <Grid
         
         container
-        xs={12}
         display="flex"
         flexDirection="column"
         justifyContent="center"
@@ -101,20 +100,20 @@ const Home = () => {
 
         {
           storeContext.filterByTrendy.slice(0,9).map((article)=>(
-            <NavLink to={`/store/${article.id}`}>
+            <NavLink to={`/store/${article.id}`} key={article.id}>
             <Card
    sx={{ width: { xs: 250, sm: 350, md: 300 }, boxShadow: "none" }}
    key={article.id}
  >
    <CardActionArea>
-     <NavLink to={`/store/${article.id}`} >
+
      <CardMedia
          component="img"
          height="100%"
          image={article.picture}
          alt={article.title}
        />
-     </NavLink>
+
      <CardContent>
        <Box display="flex" justifyContent="space-between">
          <Typography
@@ -204,20 +203,20 @@ const Home = () => {
 
         {
           storeContext.filterByBestseller.slice(0,6).map((article)=>(
-            <NavLink to={`/store/${article.id}`}>
+            <NavLink to={`/store/${article.id}`} key={article.id}>
             <Card
    sx={{ width: { xs: 250, sm: 350, md: 300 }, boxShadow: "none" }}
    key={article.id}
  >
    <CardActionArea>
-     <NavLink to={`/store/${article.id}`}>
+
      <CardMedia
          component="img"
          height="100%"
          image={article.picture}
          alt={article.title}
        />
-     </NavLink>
+
      <CardContent>
        <Box display="flex" justifyContent="space-between">
          <Typography
@@ -268,14 +267,14 @@ const Home = () => {
 
         {
           categories.map((category)=>(
-            <NavLink to={`/store`} onClick={()=> handleCategory(category.genre)}>
+            <NavLink to={`/store`} onClick={()=> handleCategory(category.genre)} key={category.id}>
                        <Card
               sx={{position:"relative", width: { xs: 250}, boxShadow: "none" }}
               key={category.id}
             >
-                <NavLink to={`/store`} onClick={()=> handleCategory(category.genre)}>
+
               <img src={category.icon} style={{position:"absolute", bottom:"0", right: "-50px", zIndex:"55"}} className="category-icon"/>
-              </NavLink>
+             
                 <CardMedia
                     component="img"
                     height="250px"
@@ -325,20 +324,20 @@ const Home = () => {
           marginBottom="50px"
         >
           {articlesData.slice(0, 3).map((article) => (
-            <NavLink to={`/articles/${article.id}`}>
+            <NavLink to={`/articles/${article.id}`} key={article.id}>
                        <Card
               sx={{ width: { xs: 250, sm: 350, md: 300 }, boxShadow: "none" }}
               key={article.id}
             >
               <CardActionArea>
-                <NavLink to={`/articles/${article.id}`}>
+  
                 <CardMedia
                     component="img"
                     height="100%"
                     image={article.picture[0]}
                     alt={article.title}
                   />
-                </NavLink>
+
                 <CardContent>
                   <Box display="flex" justifyContent="space-between">
                     <Typography

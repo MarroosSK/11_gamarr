@@ -58,9 +58,12 @@ const Navbar = () => {
           gap="10px"
           sx={{ flexDirection: { xs: "column", md: "row" } }}
         >
+          {/* SIDEBAR LINKS */}
           <Stack direction="row" spacing={1}>
             <Sidebar />
           </Stack>
+
+          {/* SEARCH BAR */}
           <TextField
             id="search"
             type="search"
@@ -82,7 +85,7 @@ const Navbar = () => {
             }}
           />
         </Box>
-
+        {/* LINKS */}
         <NavLinks />
       </Toolbar>
     </AppBar>
