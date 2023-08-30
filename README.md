@@ -6,7 +6,7 @@ It is a store with digital keys for games, where user can search and filter them
 
 ## Screenshots
 
-![App Screenshot](https://i.postimg.cc/qvqS7wYL/11-gamer.jpg)
+![App Screenshot](https://i.postimg.cc/qqqWPZHX/gamerPic.jpg)
 
 
 ## Authors
@@ -46,10 +46,10 @@ I'm a react frontend developer working on my skills everyday.
 
 
 ## 🛠 Skills
-Javascript, Typescript, HTML, CSS, React
+Javascript, Typescript, HTML, CSS, React, Express, SQL (Postgre/Mysql), Prisma ORM
 
 
 ## Lessons Learned
 
-By building this project i've learned a lot about managing states of app with context API. Other than that i've practiced typescript and CRUD operations.
+By building this project i've learned a lot about managing states of app with context API as well as using CSS. Other than that i've practiced typescript and CRUD operations.
 
